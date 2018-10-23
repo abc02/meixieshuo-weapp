@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="p-4 height-100vh bg-dark">
+  <!-- <i-row>
+    <i-col span="8" i-class="col-class">col-8</i-col>
+    <i-col span="8" i-class="col-class">col-8</i-col>
+    <i-col span="8" i-class="col-class">col-8</i-col>
+  </i-row> -->
+  <text>美丽鞋说</text>
+</view>
