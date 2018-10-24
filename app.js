@@ -32,15 +32,8 @@ App({
         }
       }
     })
-    wx.getLocation({
-      type: 'wgs84',
-      success: res => {
-        this.globalData.locationInfo = res
-      }
-    })
   },
   globalData: {
-    userInfo: null,
-    locationInfo: null
+    userInfo: null
   }
 })
