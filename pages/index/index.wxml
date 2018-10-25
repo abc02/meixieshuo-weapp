@@ -1,30 +1,41 @@
 <!--index.wxml-->
-<view class="bg-dark">
-  <view class="d-flex flex-column justify-content-center align-items-center pt-4 pb-4">
-    <text class="text-white h6">权威种草榜单，实时为你更新</text>
-    <text class="text-white h1 mb-1">美食排行榜</text>
-    <view class="text-white h5">
+<view class="bg-dark p-4">
+  <view class="d-flex flex-column justify-content-center align-items-center text-white mb-4">
+    <text class="p">权威种草榜单，实时为你更新</text>
+    <text class="h1">美食排行榜</text>
+    <view class="p mt-2 mb-2">
       <text>XieDuNet ·</text>
-      <text>温州</text>
+      <text>{{city}}</text>
     </view>
   </view>
-  <view class="bg-white ml-4 mr-4 p-2">
-    <view class="text-white bg-dark d-flex flex-column pl-2" style="padding-top: 44rpx; padding-bottom: 44rpx;">
-      <text class="h3">全城热门排行榜</text>
-      <text class="h5">你想吃的都在这里</text>
+  <view class="bg-white p-2 mb-2" wx:if="{{hasRankingTypes}}">
+    <view class="bg-dark relative mb-2" style="height: 230rpx;">
+      <!-- <image mode="aspectFill" src="{{rankingTypes.rankingPypeData.TypePic}}"></image> -->
+      <text class="h3 absolute-middle-left text-white" style="left: 18rpx;">{{rankingTypes.rankingPypeData.TypeName}}</text>
     </view>
-    <i-row i-class="mt-1">
+    <view class="d-flex flex-row justify-content-start align-item-center">
+      <view wx:for="{{rankingTypes.rankingPypes}}"
+      class="{{rankingTypes.rankingPypes.length - 1 !== index ? 'relative flex-fill bg-dark pt-2 pl-2 pr-2 pb-4 text-center mr-2' : 'relative flex-fill bg-dark pt-2 pl-2 pr-2 pb-4 text-center'}}" >
+        <text class="h5 text-white bold">{{item.TypeName}}{{}}</text>
+        <!-- <image mode="aspectFill" src="{{item.TypePic}}"></image> -->
+      </view>
+    </view>
+    <!-- <i-row i-class="mt-1">
       <i-col span="5" i-class="pl-1 pr-1 pt-1 pb-3 bg-dark text-white h5">口味榜</i-col>
       <i-col span="5" offset="1" i-class="pl-1 pr-1 pt-1 pb-3 bg-dark text-white h5">服务榜</i-col>
       <i-col span="5" offset="1" i-class="pl-1 pr-1 pt-1 pb-3 bg-dark text-white h5">环境榜</i-col>
       <i-col span="5" offset="1" i-class="pl-1 pr-1 pt-1 pb-3 bg-dark text-white h5">评价榜</i-col>
-    </i-row>
+    </i-row> -->
   </view>
-  <i-row i-class="mt-1 ml-4 mr-4">
+  <view class="d-flex flex-row">
+    <view class="h3 text-white flex-fill mr-3">必吃榜</view>
+    <view class="h3 text-white flex-fill">黑珍珠餐厅指南</view>
+  </view>
+  <!-- <i-row i-class="">
     <i-col span="11" i-class="pl-1 pr-1 pt-1 pb-3 bg-white h5">必吃榜</i-col>
     <i-col span="11" offset="2" i-class="pl-1 pr-1 pt-1 pb-3 bg-white h5">黑珍珠餐厅指南</i-col>
-  </i-row>
-  <view class="mt-1 ml-4 mr-4 p-2 bg-white" style="margin-bottom: 126rpx;">
+  </i-row> -->
+  <view class="p-2 bg-white" style="margin-bottom: 126rpx;">
     <i-row i-class="text-center">
       <i-col span="24 " i-class="p-2 h5">附近人气商户排行榜</i-col>
     </i-row>
