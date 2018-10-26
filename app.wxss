@@ -14,6 +14,9 @@
 .bg-dark-primary {
   background-color: #2b85e4;
 }
+.text-dark {
+  color: #191919;
+}
 .text-white {
   color: #f8f8f9;
 }
@@ -209,9 +212,12 @@
 .mb-4 {
   margin-bottom: 24rpx;
 }
+.hidden {
+  overflow: hidden;
+}
 
 .flex-fill {
-  flex-grow: 1;
+  flex: 1;
 }
 .d-flex {
   display: flex;

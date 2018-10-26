@@ -1,7 +1,3 @@
 {
-  "navigationBarTitleText": "鞋业排行榜",
-  "usingComponents": {
-    "i-row": "../../dist/row/index",
-    "i-col": "../../dist/col/index"
-  }
+  "navigationBarTitleText": "美丽鞋说排行榜"
 }

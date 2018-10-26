@@ -17,9 +17,10 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function () {
+  bindViewTap: function (event) {
+    let { path, typeid, typename } = event.currentTarget.dataset
     wx.navigateTo({
-      url: '../logs/logs'
+      url: `../${path}/${path}?typeid=${typeid}&typename=${typename}`
     })
   },
   onLoad: function () {
@@ -30,6 +31,26 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success: res => {
+        // wx.request({
+        //   url: 'https://api.0577xiedu.com/v1/shoes_home/GetRankingList',
+        //   method: 'POST',
+        //   data: {
+        //     latitude: res.latitude,
+        //     longitude: res.longitude
+        //   },
+        //   success: response => {
+        //     if (response.data.ret === 1001) {
+        //       this.setData({
+        //         rankingLists: response.data.data,
+        //         hasRankingLists: true
+        //       })
+        //     }
+
+        //   },
+        //   fail(error) {
+        //     console.log(error)
+        //   }
+        // })
         // 调用接口
         qqmapsdk.reverseGeocoder({
           location: {
@@ -38,13 +59,15 @@ Page({
           },
           coord_type: 1,
           get_poi: 1,
+          // poi_options: address_format = short,
           success: response => {
+            // console.log(response)
             this.setData({
               city: response.result.ad_info.city,
               hasCity: true
             })
           },
-          fail:  error => {
+          fail: error => {
             console.log(error);
           },
           // complete: function (response) {
@@ -63,9 +86,9 @@ Page({
             hasRankingTypes: true
           })
         }
-        
+
       },
-      fail (error) {
+      fail(error) {
         console.log(error)
       }
     })
@@ -96,12 +119,12 @@ Page({
     //   })
     // }
   },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
+  // getUserInfo: function (e) {
+  //   console.log(e)
+  //   app.globalData.userInfo = e.detail.userInfo
+  //   this.setData({
+  //     userInfo: e.detail.userInfo,
+  //     hasUserInfo: true
+  //   })
+  // }
 })

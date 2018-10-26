@@ -1,62 +1,49 @@
 <!--index.wxml-->
 <view class="bg-dark p-4">
-  <view class="d-flex flex-column justify-content-center align-items-center text-white mb-4">
+  <view class="d-flex flex-column justify-content-center align-items-center text-white" style="margin: 58rpx 0;">
     <text class="p">权威种草榜单，实时为你更新</text>
-    <text class="h1">美食排行榜</text>
-    <view class="p mt-2 mb-2">
-      <text>XieDuNet ·</text>
+    <text class="h1">鞋业排行榜</text>
+    <view class="h5 mt-2 mb-2" wx:if="{{hasCity}}">
       <text>{{city}}</text>
     </view>
   </view>
-  <view class="bg-white p-2 mb-2" wx:if="{{hasRankingTypes}}">
-    <view class="bg-dark relative mb-2" style="height: 230rpx;">
-      <!-- <image mode="aspectFill" src="{{rankingTypes.rankingPypeData.TypePic}}"></image> -->
+  <view class="bg-white p-2 mb-4" wx:if="{{hasRankingTypes}}">
+    <view class="bg-dark relative mb-2 hidden" style="height: 230rpx;" data-path="ranking_details" data-typeid="{{rankingTypes.rankingPypeData.TypeId}}" data-typename="{{rankingTypes.rankingPypeData.TypeName}}" bindtap="bindViewTap">
+      <image class="absolute-top-left" src="{{rankingTypes.rankingPypeData.TypePic}}"></image>
       <text class="h3 absolute-middle-left text-white" style="left: 18rpx;">{{rankingTypes.rankingPypeData.TypeName}}</text>
     </view>
     <view class="d-flex flex-row justify-content-start align-item-center">
-      <view wx:for="{{rankingTypes.rankingPypes}}"
-      class="{{rankingTypes.rankingPypes.length - 1 !== index ? 'relative flex-fill bg-dark pt-2 pl-2 pr-2 pb-4 text-center mr-2' : 'relative flex-fill bg-dark pt-2 pl-2 pr-2 pb-4 text-center'}}" >
-        <text class="h5 text-white bold">{{item.TypeName}}{{}}</text>
-        <!-- <image mode="aspectFill" src="{{item.TypePic}}"></image> -->
+      <view wx:for="{{rankingTypes.rankingPypes}}" wx:key="{{item.TypeId}}" style="height: 130rpx;" class="{{rankingTypes.rankingPypes.length - 1 !== index ? 'hidden relative flex-fill bg-dark mr-2' : 'hidden relative flex-fill bg-dark'}}">
+        <image class="absolute-top-left" src="{{item.TypePic}}"></image>
+        <text class="absolute-top-left absolute-top-right h5 text-white bold text-center" style="top: 18rpx">{{item.TypeName}}</text>
       </view>
     </view>
-    <!-- <i-row i-class="mt-1">
-      <i-col span="5" i-class="pl-1 pr-1 pt-1 pb-3 bg-dark text-white h5">口味榜</i-col>
-      <i-col span="5" offset="1" i-class="pl-1 pr-1 pt-1 pb-3 bg-dark text-white h5">服务榜</i-col>
-      <i-col span="5" offset="1" i-class="pl-1 pr-1 pt-1 pb-3 bg-dark text-white h5">环境榜</i-col>
-      <i-col span="5" offset="1" i-class="pl-1 pr-1 pt-1 pb-3 bg-dark text-white h5">评价榜</i-col>
-    </i-row> -->
   </view>
-  <view class="d-flex flex-row">
-    <view class="h3 text-white flex-fill mr-3">必吃榜</view>
-    <view class="h3 text-white flex-fill">黑珍珠餐厅指南</view>
+  <view class="d-flex flex-row mb-4">
+    <view class="bg-white flex-fill d-flex flex-column pt-4 pl-4 mr-4" style="height: 130rpx;">
+      <text class="text-dark h4 bold">鞋业榜</text>
+      <text class="text-dark p">温州必知鞋业</text>
+    </view>
+    <view class="bg-white flex-fill d-flex flex-column pt-4 pl-4" style="height: 130rpx;">
+      <text class="text-dark h4 bold ">奥康鞋业指南</text>
+      <text class="text-dark p">探寻奥康鞋业</text>
+    </view>
   </view>
-  <!-- <i-row i-class="">
-    <i-col span="11" i-class="pl-1 pr-1 pt-1 pb-3 bg-white h5">必吃榜</i-col>
-    <i-col span="11" offset="2" i-class="pl-1 pr-1 pt-1 pb-3 bg-white h5">黑珍珠餐厅指南</i-col>
-  </i-row> -->
-  <view class="p-2 bg-white" style="margin-bottom: 126rpx;">
-    <i-row i-class="text-center">
-      <i-col span="24 " i-class="p-2 h5">附近人气商户排行榜</i-col>
-    </i-row>
-    <i-row i-class="bg-dark text-white text-center">
-      <i-col span="24 " i-class="p-4 h5">双屿人气商户</i-col>
-    </i-row>
-    <i-row i-class="text-white text-center mt-2">
-      <i-col span="7" i-class="bg-dark pl-1 pr-1 pt-1 pb-3 h5">翠微山</i-col>
-      <i-col span="7" offset="1" i-class="bg-dark pl-1 pr-1 pt-1 pb-3 h5">瓯浦垟</i-col>
-      <i-col span="7" offset="1" i-class="bg-dark pl-1 pr-1 pt-1 pb-3 h5">黄龙</i-col>
-    </i-row>
+  <view class="bg-white p-2" style="margin-bottom: 138rpx;" wx:if="{{hasCity}}">
+    <view class="text-center mt-4 mb-4">
+      <text class="h5">附近人气鞋业排行榜</text>
+    </view>
+    <view class="bg-dark text-center mb-2 d-flex justify-content-center align-items-center" style="height: 230rpx;">
+      <text class="h3 text-white">{{city}}人气鞋业</text>
+    </view>
   </view>
   <view style="padding-bottom: 86rpx;">
-    <i-row i-class="text-white text-center">
-      <i-col span="24 " i-class="h5">根据店铺人气排名，榜单内容动态更新</i-col>
-    </i-row>
-    <i-row i-class="text-white text-center">
-      <i-col span="24 " i-class="h5">通品牌上商家展示人气最高的店铺</i-col>
-    </i-row>
-    <i-row i-class="text-white text-center pt-3">
-      <i-col span="24 " i-class="h5">XieDuNet</i-col>
-    </i-row>
+    <view class="d-flex flex-column justify-content-center align-items-center mb-4">
+      <text class="text-sub p">根据鞋业人气排名，榜单内容动态更新</text>
+      <text class="text-sub p">同品牌商家展示人气最高的鞋业</text>
+    </view>
+    <view class="text-center">
+      <text class="text-sub h3">XieDuNet</text>
+    </view>
   </view>
 </view>

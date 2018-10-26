@@ -1,0 +1,16 @@
+<!--ranking_details.wxml-->
+<view class="">
+  <view class="bg-dark d-flex justify-content-center" style="padding: 86rpx 0;">
+    <text class="text-white">{{typeName}}</text>
+  </view>
+  <view class="pt-2   pb-2 pl-4 mb-2  d-flex flex-column" wx:for="{{rankingLists}}" wx:if="{{hasRankingLists}}">
+    <view class="d-flex flex-row">
+      <image class="hidden" style="width: 120rpx; height: 120rpx;" mode="scaleToFill	" src="{{item.Pic}}"></image>  
+      <view class="flex-fill">
+        {{item.Name}}
+      </view>
+    </view>
+    
+    <view class="divider"></view>
+  </view>
+</view>
