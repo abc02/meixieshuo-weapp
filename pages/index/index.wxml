@@ -13,7 +13,7 @@
       <text class="h3 absolute-middle-left text-white" style="left: 18rpx;">{{rankingTypes.rankingPypeData.TypeName}}</text>
     </view>
     <view class="d-flex flex-row justify-content-start align-item-center">
-      <view wx:for="{{rankingTypes.rankingPypes}}" wx:key="{{item.TypeId}}" style="height: 130rpx;" class="{{rankingTypes.rankingPypes.length - 1 !== index ? 'hidden relative flex-fill bg-dark mr-2' : 'hidden relative flex-fill bg-dark'}}">
+      <view wx:for="{{rankingTypes.rankingPypes}}" wx:key="{{item.TypeId}}" style="height: 130rpx;" class="{{rankingTypes.rankingPypes.length - 1 !== index ? 'hidden relative flex-fill bg-dark mr-2' : 'hidden relative flex-fill bg-dark'}}" data-path="ranking_details" data-typeid="{{item.TypeId}}" data-typename="{{item.TypeName}}" bindtap="bindViewTap">
         <image class="absolute-top-left" src="{{item.TypePic}}"></image>
         <text class="absolute-top-left absolute-top-right h5 text-white bold text-center" style="top: 18rpx">{{item.TypeName}}</text>
       </view>
@@ -33,7 +33,8 @@
     <view class="text-center mt-4 mb-4">
       <text class="h5">附近人气鞋业排行榜</text>
     </view>
-    <view class="bg-dark text-center mb-2 d-flex justify-content-center align-items-center" style="height: 230rpx;">
+    <view class="bg-dark text-center mb-2 d-flex justify-content-center align-items-center" style="height: 230rpx;"
+     data-path="hot_ranking" bindtap="bindViewTap">
       <text class="h3 text-white">{{city}}人气鞋业</text>
     </view>
   </view>

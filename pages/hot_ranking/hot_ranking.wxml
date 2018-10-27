@@ -1,0 +1,8 @@
+<!--pages/hot_ranking/hot_ranking.wxml-->
+<view class="bg-dark">
+  <view class="bg-dark d-flex flex-column pl-4" style="padding-bottom: 86rpx; padding-top: 86rpx;">
+    <text class="text-white h5 mb-2">今日 人气榜</text>
+    <text class="text-white h3 mb-4">{{city}}人气下午好鞋好店TOP10</text>
+    <text class="text-white p">听说下午鞋和周末更配</text>
+  </view>
+</view>

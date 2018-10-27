@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/hot_ranking/hot_ranking",
     "pages/index/index",
     "pages/ranking_details/ranking_details",
     "pages/logs/logs"

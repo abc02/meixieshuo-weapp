@@ -3,14 +3,15 @@
   <view class="bg-dark d-flex justify-content-center" style="padding: 86rpx 0;">
     <text class="text-white">{{typeName}}</text>
   </view>
-  <view class="pt-2   pb-2 pl-4 mb-2  d-flex flex-column" wx:for="{{rankingLists}}" wx:if="{{hasRankingLists}}">
-    <view class="d-flex flex-row">
-      <image class="hidden" style="width: 120rpx; height: 120rpx;" mode="scaleToFill	" src="{{item.Pic}}"></image>  
-      <view class="flex-fill">
-        {{item.Name}}
+  <view class="d-flex flex-column pl-4" wx:for="{{rankingLists}}" wx:key="index" wx:if="{{hasRankingLists}}">
+    <view class="d-flex flex-row pb-4 pt-4">
+      <image class="hidden mr-4" style="width: 128rpx; height: 128rpx;" mode="scaleToFill	" src="{{item.Pic}}"></image>
+      <view class="flex-fill d-flex flex-column">
+        <text class="p text-title mb-2">{{item.Name}}</text>
+        <text class="p text-sub mb-2">{{item.CreateTime}}</text>
+        <text class="p text-sub">{{item.Address}}</text>
       </view>
     </view>
-    
     <view class="divider"></view>
   </view>
 </view>

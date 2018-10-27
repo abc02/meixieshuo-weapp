@@ -1,4 +1,4 @@
-// ranking_details.js
+// pages/hot_ranking/hot_ranking.js
 const util = require('../../utils/util.js')
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 var qqmapsdk;
@@ -9,25 +9,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    typeId: '',
-    hasTypeId: false,
-    typeName: '',
-    hasTypeName: false,
-    rankingLists: {},
-    hasRankingLists: false
+    city: null,
+    hasCity: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    this.setData({
-      typeId: options.typeid || 0,
-      hasTypeId: true,
-      typeName: options.typename || '鞋业热门排行榜',
-      hasTypeName: true
-    })
     // 实例化API核心类
     qqmapsdk = new QQMapWX({
       key: 'GVRBZ-OZTWU-V7HV7-4KQJX-2CEIQ-UTFFW'
@@ -35,31 +24,31 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success: res => {
-        wx.request({
-          url: 'https://api.0577xiedu.com/v1/shoes_home/GetRankingList',
-          method: 'POST',
-          data: {
+        // 调用接口
+        qqmapsdk.reverseGeocoder({
+          location: {
             latitude: res.latitude,
             longitude: res.longitude
           },
+          coord_type: 1,
+          get_poi: 1,
+          // poi_options: address_format = short,
           success: response => {
-            if (response.data.ret === 1001) {
-              this.setData({
-                rankingLists: (response.data.data || []).map(item => {
-                  item.CreateTime = util.formatDate(new Date(Number(item.CreateTime + '000')))
-                  return item
-                }),
-                hasRankingLists: true
-              })
-            }
-
+            this.setData({
+              city: response.result.ad_info.city,
+              hasCity: true
+            })
           },
-          fail(error) {
-            console.log(error)
-          }
-        })
+          fail: error => {
+            console.log(error);
+          },
+          // complete: function (response) {
+          //   console.log(response);
+          // }
+        });
       }
     })
+
   },
 
   /**

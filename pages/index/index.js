@@ -18,9 +18,13 @@ Page({
   },
   //事件处理函数
   bindViewTap: function (event) {
-    let { path, typeid, typename } = event.currentTarget.dataset
+    let { path, typeid, typename } = event.currentTarget.dataset,
+      url = `../${path}/${path}`
+    if (typeid === 0 || typeid && typename) {
+      url = `${url}?typeid=${typeid}&typename=${typename} `
+    }
     wx.navigateTo({
-      url: `../${path}/${path}?typeid=${typeid}&typename=${typename}`
+      url: url
     })
   },
   onLoad: function () {
