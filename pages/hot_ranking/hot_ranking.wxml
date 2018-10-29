@@ -1,8 +1,27 @@
 <!--pages/hot_ranking/hot_ranking.wxml-->
-<view class="bg-dark">
+<view class="bg-dark height-100vh">
   <view class="bg-dark d-flex flex-column pl-4" style="padding-bottom: 86rpx; padding-top: 86rpx;">
     <text class="text-white h5 mb-2">今日 人气榜</text>
     <text class="text-white h3 mb-4">{{city}}人气下午好鞋好店TOP10</text>
     <text class="text-white p">听说下午鞋和周末更配</text>
+  </view>
+  <view class="pl-4 pr-4 mb-4" style="margin-bottom: 48rpx;">
+    <view wx:for="{{rankingLists}}" wx:key="{{item.Name}}" class="relative bg-white mb-4 d-flex flex-row p-4">
+      <view class="absolute-top-left ml-4 bg-light-primary text-white pl-3 pr-3 pb-2 pt-1">
+        <text class="mr-2 h5">TOP</text>
+        <text class="h5">{{item.Top}}</text>
+        <view class="divider"></view>
+      </view>
+      <image class="hidden mr-4 " style="width: 228rpx; height: 228rpx; " mode="scaleToFill " src="{{item.Pic}} "></image>
+      <view class="flex-fill d-flex flex-column justify-content-around" data-path="details" data-item="{{item}}" data-id="{{item.Id}}" bindtap="bindViewTap">
+        <text class="p text-title mb-2 ">{{item.Name}}</text>
+        <text class="p text-sub mb-2 ">{{item.CreateTime}}</text>
+        <text class="p text-sub ">{{item.Address}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="d-flex flex-column justify-content-center align-items-center mb-4" style="margin-bottom: 48rpx;">
+    <text class="text-sub p mb-2">根据鞋业人气排名，榜单内容动态更新</text>
+    <text class="text-sub p">同品牌商家展示人气最高的鞋业</text>
   </view>
 </view>

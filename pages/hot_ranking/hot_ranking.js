@@ -11,8 +11,21 @@ Page({
   data: {
     city: null,
     hasCity: false,
+    rankingLists: {},
+    hasRankingLists: false
   },
+  //事件处理函数
+  bindViewTap: function (event) {
+    let { path, item } = event.currentTarget.dataset,
+      url = `../${path}/${path}`
+    // url = id && `${url}?id=${id}` || url
 
+    wx.setStorage({
+      key: "rankingItem",
+      data: item
+    })
+    wx.navigateTo({ url })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -46,6 +59,31 @@ Page({
           //   console.log(response);
           // }
         });
+
+        wx.request({
+          url: 'https://api.0577xiedu.com/v1/shoes_home/GetRankingList',
+          method: 'POST',
+          data: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: response => {
+            if (response.data.ret === 1001) {
+              this.setData({
+                rankingLists: (response.data.data || []).map((item, index) => {
+                  item.CreateTime = util.formatDate(new Date(Number(item.CreateTime + '000')))
+                  item.Top = util.formatNumber(index + 1)
+                  return item
+                }),
+                hasRankingLists: true
+              })
+            }
+
+          },
+          fail(error) {
+            console.log(error)
+          }
+        })
       }
     })
 

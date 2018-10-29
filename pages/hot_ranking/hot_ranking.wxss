@@ -1,1 +1,4 @@
 /* pages/hot_ranking/hot_ranking.wxss */
+page{
+  height: 100vh;
+}
