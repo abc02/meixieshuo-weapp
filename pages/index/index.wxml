@@ -9,33 +9,42 @@
   </view>
   <view class="bg-white p-2 mb-4" wx:if="{{hasRankingTypes}}">
     <view class="bg-dark relative mb-2 hidden" style="height: 230rpx;" data-path="ranking_details" data-typeid="{{rankingTypes.rankingPypeData.TypeId}}" data-typename="{{rankingTypes.rankingPypeData.TypeName}}" bindtap="bindViewTap">
-      <image class="absolute-top-left" src="{{rankingTypes.rankingPypeData.TypePic}}"></image>
+      <image class="absolute-top-left absolute-bottom-right" style="width: 100%;" mode="widthFix" src="{{rankingTypes.rankingPypeData.TypePic}}"></image>
       <text class="h3 absolute-middle-left text-white" style="left: 18rpx;">{{rankingTypes.rankingPypeData.TypeName}}</text>
     </view>
     <view class="d-flex flex-row justify-content-start align-item-center">
-      <view wx:for="{{rankingTypes.rankingPypes}}" wx:key="{{item.TypeId}}" style="height: 130rpx;" class="{{rankingTypes.rankingPypes.length - 1 !== index ? 'hidden relative flex-fill bg-dark mr-2' : 'hidden relative flex-fill bg-dark'}}" data-path="ranking_details" data-typeid="{{item.TypeId}}" data-typename="{{item.TypeName}}" bindtap="bindViewTap">
-        <image class="absolute-top-left" src="{{item.TypePic}}"></image>
-        <text class="absolute-top-left absolute-top-right h5 text-white bold text-center" style="top: 18rpx">{{item.TypeName}}</text>
+      <view wx:for="{{rankingTypes.rankingPypes}}" wx:key="{{item.TypeId}}" style="height: 130rpx;" class="{{rankingTypes.rankingPypes.length - 1 !== index ? 'hidden relative flex-fill bg-dark mr-2' : 'hidden relative flex-fill bg-dark'}}" data-path="ranking_details"
+        data-typeid="{{item.TypeId}}" data-typename="{{item.TypeName}}" bindtap="bindViewTap">
+        <image class="absolute-top-left absolute-bottom-right" style="width: 100%;" mode="widthFix" src="{{item.TypePic}}"></image>
+        <text class="absolute-top-left absolute-top-right h5 text-white bold text-center" style="top: 6rpx">{{item.TypeName}}</text>
       </view>
     </view>
   </view>
   <view class="d-flex flex-row mb-4">
-    <view class="bg-white flex-fill d-flex flex-column pt-4 pl-4 mr-4" style="height: 130rpx;">
-      <text class="text-dark h4 bold">鞋业榜</text>
-      <text class="text-dark p">温州必知鞋业</text>
+    <view class="bg-white flex-fill d-flex flex-column pt-4 pl-4 mr-4 relative" style="height: 130rpx;">
+      <image class="absolute-top-right" src="./assets/6.png" mode="aspectFill" style="width: 50%; height: 100%;"></image>
+      <view class="absolute-top-left d-flex flex-column" style="top: 12rpx; left: 12rpx;">
+        <text class="text-dark h4 bold">鞋业榜</text>
+        <text class="text-dark p">温州必知鞋业</text>
+      </view>
     </view>
-    <view class="bg-white flex-fill d-flex flex-column pt-4 pl-4" style="height: 130rpx;">
-      <text class="text-dark h4 bold ">奥康鞋业指南</text>
-      <text class="text-dark p">探寻奥康鞋业</text>
+    <view class="bg-white flex-fill d-flex flex-column pt-4 pl-4 relative" style="height: 130rpx;">
+      <image class="absolute-top-right" src="./assets/7.png" mode="aspectFill" style="width: 50%; height: 100%;"></image>
+      <view class="absolute-top-left d-flex flex-column" style="top: 12rpx; left: 12rpx;">
+        <text class="text-dark h4 bold ">奥康鞋业指南</text>
+        <text class="text-dark p">探寻奥康鞋业</text>
+      </view>
     </view>
   </view>
   <view class="bg-white p-2" style="margin-bottom: 138rpx;" wx:if="{{hasCity}}">
     <view class="text-center mt-4 mb-4">
       <text class="h5">附近人气鞋业排行榜</text>
     </view>
-    <view class="bg-dark text-center mb-2 d-flex justify-content-center align-items-center" style="height: 230rpx;"
-     data-path="hot_ranking" bindtap="bindViewTap">
-      <text class="h3 text-white">{{city}}人气鞋业</text>
+    <view class="bg-dark text-center mb-2 d-flex justify-content-center align-items-center relative" style="height: 230rpx;" data-path="hot_ranking" bindtap="bindViewTap">
+      <image class="absolute-top-left absolute-bottom-right" style="width: 100%;" mode="widthFix" src="./assets/8.png"></image>
+      <view class="absolute-middle-left" style="left: 48rpx;">
+        <text class="h3 text-white">{{city}}人气鞋业</text>
+      </view>
     </view>
   </view>
   <view style="padding-bottom: 86rpx;">
